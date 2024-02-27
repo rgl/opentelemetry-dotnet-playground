@@ -1,0 +1,25 @@
+# see https://github.com/compose-spec/compose-spec/blob/master/spec.md
+# see https://github.com/opencontainers/image-spec/blob/master/annotations.md
+services:
+  aspire-dashboard:
+    # see https://mcr.microsoft.com/product/dotnet/nightly/aspire-dashboard/about
+    # see https://github.com/dotnet/dotnet-docker/issues/5128
+    # see https://github.com/dotnet/aspire/issues/2248#issuecomment-1947902486
+    image: mcr.microsoft.com/dotnet/nightly/aspire-dashboard:8.0.0-preview.4
+    ports:
+      # web ui.
+      - 18888:18888
+      # otlp grpc.
+      #- 18889:18889
+    restart: on-failure
+  quotes:
+    build: quotes
+    environment:
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://aspire-dashboard:18889
+      - OTEL_EXPORTER_OTLP_PROTOCOL=grpc
+      - ASPNETCORE_URLS=http://+:8000
+    ports:
+      # http api.
+      # http://localhost:8000
+      - 8000:8000
+    restart: on-failure
