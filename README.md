@@ -63,6 +63,9 @@ docker compose down --remove-orphans --volumes --timeout=0
 # Reference
 
 * [W3C Trace Context](https://www.w3.org/TR/trace-context/).
+* [OpenTelemetry Concepts](https://opentelemetry.io/docs/concepts/).
+* [OpenTelemetry Semantic Conventions Specification](https://opentelemetry.io/docs/specs/semconv/).
+* [OpenTelemetry Specifications](https://opentelemetry.io/docs/specs/status/).
 * [opentelemetry-dotnet repository](https://github.com/open-telemetry/opentelemetry-dotnet).
 * [OpenTelemetry in .NET documentation](https://opentelemetry.io/docs/languages/net/).
 * [OpenTelemetry.Exporter.OpenTelemetryProtocol Environment Variables](https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry.Exporter.OpenTelemetryProtocol#environment-variables).
