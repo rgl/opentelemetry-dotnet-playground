@@ -1,4 +1,5 @@
 using System.Reflection;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.ResourceDetectors.Container;
@@ -7,6 +8,7 @@ using OpenTelemetry.Trace;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddHealthChecks();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -45,6 +47,8 @@ builder.Logging.Configure(options =>
 );
 
 var app = builder.Build();
+
+app.MapHealthChecks("/healthz/ready");
 
 // enable the swagger document endpoint and swagger ui.
 app.UseSwagger();   // make the swagger available at /swagger/v1/swagger.json

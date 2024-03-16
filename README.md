@@ -21,6 +21,11 @@ docker compose ps
 # show logs.
 docker compose logs
 
+# show the quotes container health check output log.
+docker inspect --format '{{json .State.Health }}' \
+  "$(docker compose ps quotes --format '{{.Name}}')" \
+  | jq -r '.Log[].Output'
+
 # open a container network interface in wireshark.
 ./wireshark.sh quotes
 
