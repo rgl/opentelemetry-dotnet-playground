@@ -17,7 +17,8 @@ QUOTES_AUTHOR_NAME="$(perl -ne 'print $1 if /\<Company\>(.+)\<\/Company\>/' <quo
 QUOTES_VENDOR="$QUOTES_AUTHOR_NAME"
 
 function set-metadata {
-  sed -i -E "s,(\<Version\>).+(\</Version\>),\1$QUOTES_VERSION\2,g" quotes/Quotes.csproj
+  QUOTES_VERSION="$QUOTES_VERSION" \
+    perl -i -pe 's,(<Version>)[^<]+(</Version>),$1$ENV{QUOTES_VERSION}$2,g' quotes/Quotes.csproj
 }
 
 function build {
