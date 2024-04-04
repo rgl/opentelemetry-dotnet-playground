@@ -13,7 +13,7 @@ The following components are used:
 ```bash
 # create the environment defined in docker-compose.yml
 # and leave it running in the background.
-docker compose up -d --build
+docker compose up --detach --build --wait
 
 # show running containers.
 docker compose ps
