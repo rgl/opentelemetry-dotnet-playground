@@ -5,7 +5,10 @@ services:
     # see https://mcr.microsoft.com/product/dotnet/nightly/aspire-dashboard/about
     # see https://github.com/dotnet/dotnet-docker/issues/5128
     # see https://github.com/dotnet/aspire/issues/2248#issuecomment-1947902486
-    image: mcr.microsoft.com/dotnet/nightly/aspire-dashboard:8.0.0-preview.4
+    # see https://github.com/dotnet/aspire/tree/main/src/Aspire.Dashboard
+    image: mcr.microsoft.com/dotnet/nightly/aspire-dashboard:8.0.0-preview.5
+    environment:
+      - DOTNET_DASHBOARD_UNSECURED_ALLOW_ANONYMOUS=true
     ports:
       # web ui.
       - 18888:18888
