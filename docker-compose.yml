@@ -2,12 +2,12 @@
 # see https://github.com/opencontainers/image-spec/blob/master/annotations.md
 services:
   aspire-dashboard:
-    # see https://mcr.microsoft.com/product/dotnet/nightly/aspire-dashboard/about
+    # see https://learn.microsoft.com/en-us/dotnet/aspire/fundamentals/dashboard/overview
+    # see https://mcr.microsoft.com/product/dotnet/aspire-dashboard/about
     # see https://github.com/dotnet/dotnet-docker/issues/5128
-    # see https://github.com/dotnet/aspire/issues/2248#issuecomment-1947902486
     # see https://github.com/dotnet/aspire/issues/3407
     # see https://github.com/dotnet/aspire/tree/main/src/Aspire.Dashboard
-    image: mcr.microsoft.com/dotnet/nightly/aspire-dashboard:8.0.0-preview.5
+    image: mcr.microsoft.com/dotnet/aspire-dashboard:8.0
     environment:
       - DOTNET_DASHBOARD_UNSECURED_ALLOW_ANONYMOUS=true
     ports:
