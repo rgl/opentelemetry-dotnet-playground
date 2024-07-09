@@ -45,10 +45,32 @@ http \
 # make a request that includes a parent trace.
 # NB the dotnet trace id will be set to the traceparent trace id.
 # NB the tracestate does not seem to be stored or propagated anywhere.
+# NB traceparent syntax: <version>-<trace-id>-<parent-id-aka-span-id>-<trace-flags>
 http \
   --verbose \
   http://localhost:8000/quote \
-  traceparent:00-f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1-2f2f2f2f2f2f2f2f-01 \
+  traceparent:00-10000000000000000000000000000000-1000000000000000-01 \
+  tracestate:x.client.state=example
+
+# make a request to quotetext, which in turn, makes a nested request to quote.
+http \
+  --verbose \
+  http://localhost:8000/quotetext
+
+# make a failing request to quotetext, which in turn, makes a nested failing
+# request to quote.
+http \
+  --verbose \
+  http://localhost:8000/quotetext?opsi=opsi
+
+# make a request that includes a parent trace.
+# NB the dotnet trace id will be set to the traceparent trace id.
+# NB the tracestate does not seem to be stored or propagated anywhere.
+# NB traceparent syntax: <version>-<trace-id>-<parent-id-aka-span-id>-<trace-flags>
+http \
+  --verbose \
+  http://localhost:8000/quotetext \
+  traceparent:00-20000000000000000000000000000000-1000000000000000-01 \
   tracestate:x.client.state=example
 
 # open aspire dashboard (metrics/traces/logs).

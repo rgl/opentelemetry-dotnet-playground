@@ -11,6 +11,17 @@ builder.Services.AddHealthChecks();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpClient(
+    "quotes",
+    client =>
+    {
+        var quotesBaseUrl = Environment.GetEnvironmentVariable("QUOTES_BASE_URL");
+        if (string.IsNullOrEmpty(quotesBaseUrl))
+        {
+            throw new ApplicationException("the QUOTES_BASE_URL environment variable must be defined");
+        }
+        client.BaseAddress = new Uri(quotesBaseUrl);
+    });
 
 // configure telemetry.
 if (Environment.GetEnvironmentVariable("OTEL_EXPORTER_OTLP_ENDPOINT") != null)
@@ -32,6 +43,7 @@ if (Environment.GetEnvironmentVariable("OTEL_EXPORTER_OTLP_ENDPOINT") != null)
             .AddAspNetCoreInstrumentation()
             .AddOtlpExporter())
         .WithTracing(tracing => tracing
+            .AddHttpClientInstrumentation()
             .AddAspNetCoreInstrumentation()
             .AddOtlpExporter()
             .AddConsoleExporter());

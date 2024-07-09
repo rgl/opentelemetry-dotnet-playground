@@ -22,6 +22,7 @@ services:
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://aspire-dashboard:18889
       - OTEL_EXPORTER_OTLP_PROTOCOL=grpc
       - ASPNETCORE_URLS=http://+:8000
+      - QUOTES_BASE_URL=http://quotes:8000
     ports:
       # http api.
       # http://localhost:8000
