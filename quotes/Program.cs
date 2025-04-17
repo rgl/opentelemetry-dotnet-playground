@@ -1,7 +1,6 @@
 using System.Reflection;
 using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
-using OpenTelemetry.ResourceDetectors.Container;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
@@ -37,7 +36,7 @@ if (Environment.GetEnvironmentVariable("OTEL_EXPORTER_OTLP_ENDPOINT") != null)
             .AddService(
                 serviceName: builder.Environment.ApplicationName,
                 serviceVersion: serviceVersion)
-            .AddDetector(new ContainerResourceDetector()))
+            .AddContainerDetector())
         .WithMetrics(metrics => metrics
             .AddRuntimeInstrumentation()
             .AddAspNetCoreInstrumentation()
