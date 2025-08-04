@@ -7,7 +7,7 @@ services:
     # see https://github.com/dotnet/dotnet-docker/issues/5128
     # see https://github.com/dotnet/aspire/issues/3407
     # see https://github.com/dotnet/aspire/tree/main/src/Aspire.Dashboard
-    image: mcr.microsoft.com/dotnet/aspire-dashboard:9.1
+    image: mcr.microsoft.com/dotnet/aspire-dashboard:9.3
     environment:
       - DOTNET_DASHBOARD_UNSECURED_ALLOW_ANONYMOUS=true
     ports:

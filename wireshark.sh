@@ -12,7 +12,7 @@ container_mac="$(docker inspect --format '{{range .NetworkSettings.Networks}}{{.
 # download the otlp protobuf files.
 # see https://github.com/open-telemetry/opentelemetry-proto/releases
 # renovate: datasource=github-releases depName=open-telemetry/opentelemetry-proto
-otlp_version='1.5.0'
+otlp_version='1.7.0'
 otlp_path="$PWD/tmp/opentelemetry-proto-$otlp_version"
 if [ ! -d "$otlp_path/opentelemetry/proto" ]; then
     otlp_parent_path="$(dirname "$otlp_path")"
