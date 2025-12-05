@@ -88,7 +88,7 @@ GITHUB_COM_TOKEN='YOUR_GITHUB_PERSONAL_TOKEN' ./renovate.sh
 
 # Notes
 
-* .NET uses the [Activity class](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.activity?view=net-8.0) to encapsulate the [W3C Trace Context](https://www.w3.org/TR/trace-context/).
+* .NET uses the [Activity class](https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.activity?view=net-10.0) to encapsulate the [W3C Trace Context](https://www.w3.org/TR/trace-context/).
   * The Activity `Id` property contains to the [W3C `traceparent` header value](https://www.w3.org/TR/trace-context/#traceparent-header).
     * It looks alike `00-98d483b6d0e3a6d012b11e23737faa50-6ac18089ab13c12e-01`.
     * It has four fields: `version`, `trace-id`, `parent-id` (aka `span-id`), and `trace-flags`.
